@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <style>
+   
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .navbar .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-links li {
+      display: inline;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .nav-links li a:hover {
+      text-decoration: underline;
+    }
+
+    
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 2.5em;
+    }
+
+    .hero p {
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+
+    
+    .image-gallery {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .image-gallery h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 0 20px;
+    }
+
+    .gallery-container img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .gallery-container img:hover {
+      transform: scale(1.05);
+    }
+
+   
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">My Website</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#" id="homeLink">Index</a></li>
+        <li><a href="#" id="aboutLink">About</a></li>
+        <li><a href="#" id="servicesLink">Services</a></li>
+        <li><a href="#" id="contactLink">Contact</a></li>
+        <li><a href="#" id="loginLink">Login</a></li>
+        <li><a href="#" id="registerLink">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to My Website</h1>
+    <p>Your one-step destination for amazing services.</p>
+  </section>
+
+  <section class="image-gallery">
+    <h2>Overview</h2>
+    <div class="gallery-container">
+      <img src="https://media.istockphoto.com/id/1827291486/photo/a-dedicated-mentor-is-explaining-mentees-importance-of-project-while-sitting-at-the-boardroom.jpg?s=2048x2048&w=is&k=20&c=BZknivDLbc5rge_1Sl4874fAw7MwPj6xuepUVw3hYnE=" alt="Team Collaboration">
+      <img src="https://unsplash.com/photos/dZxQn4VEv2M/download" alt="Workspace">
+      <img src="https://unsplash.com/photos/Lks7vei-eAg/download" alt="Resume Review">
+      <img src="https://media.istockphoto.com/id/1211171802/photo/successful-teamwork.jpg?s=2048x2048&w=is&k=20&c=wz3wKUkwTEgzSlfCS9Y6gsRcLWNdxHUOsgkJZ58PyUs=" alt="Handshake">
+    </div>
+  </section>
+  
+  <footer>
+    <p>© 2025 My Website. All rights reserved.</p>
+  </footer>
+
+  <script>
+    
+    document.getElementById("homeLink").addEventListener("click", () => {
+      alert("Redirecting to Index Page...");
+      window.location.href = "index.html";
+    });
+
+    document.getElementById("aboutLink").addEventListener("click", () => {
+      alert("Redirecting to About Page...");
+      window.location.href = "about.html";
+    });
+
+    document.getElementById("servicesLink").addEventListener("click", () => {
+      alert("Redirecting to Services Page...");
+      window.location.href = "services.html";
+    });
+
+    document.getElementById("contactLink").addEventListener("click", () => {
+      alert("Redirecting to Contact Page...");
+      window.location.href = "contact.html";
+    });
+
+    document.getElementById("loginLink").addEventListener("click", () => {
+      alert("Redirecting to Login Page...");
+      window.location.href = "login.html";
+    });
+
+    document.getElementById("registerLink").addEventListener("click", () => {
+      alert("Redirecting to Register Page...");
+      window.location.href = "register.html";
+    });
+  </script>
+</body>
+</html>

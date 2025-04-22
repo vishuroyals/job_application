@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        section {
+            margin: 20px;
+            padding: 10px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            width: 200px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+            word-wrap: break-word;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        th:nth-child(1), td:nth-child(1) {
+            width: 30%; 
+        }
+
+        th:nth-child(2), td:nth-child(2) {
+            width: 40%; 
+        }
+
+        th:nth-child(3), td:nth-child(3) {
+            width: 30%; 
+        }
+
+        #message {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e7f7e7;
+            border: 1px solid #4CAF50;
+            color: #4CAF50;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Job Application Form</h1>
+    </header>
+
+    <section>
+        <div id="message"></div>
+        <form id="jobApplicationForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="job">Job role:</label>
+            <input type="text" id="job" name="job" required><br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Registered Members</h2>
+        <table id="membersTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Job role</th>
+                </tr>
+            </thead>
+            <tbody id="membersList"></tbody>
+        </table>
+    </section>
+
+    <script>
+        if (localStorage.getItem('members') && JSON.parse(localStorage.getItem('members')).length > 0) {
+            document.getElementById('message').style.display = 'none';
+        }
+
+        document.getElementById('jobApplicationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const job = document.getElementById('job').value;
+
+            let members = JSON.parse(localStorage.getItem('members')) || [];
+
+            const newMember = { name, email, job };
+
+            members.push(newMember);
+            localStorage.setItem('members', JSON.stringify(members));
+
+            document.getElementById('jobApplicationForm').style.display = 'none';
+            document.getElementById('message').style.display = 'block';
+            document.getElementById('message').innerHTML = "<h3>Thank you for applying! You are now registered.</h3>";
+
+            displayMembers();
+        });
+
+        function displayMembers() {
+            const members = JSON.parse(localStorage.getItem('members')) || [];
+            const membersList = document.getElementById('membersList');
+
+            membersList.innerHTML = '';
+
+            members.forEach(member => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${member.name}</td>
+                    <td>${member.email}</td>
+                    <td>${member.job}</td>
+                `;
+                membersList.appendChild(row);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', displayMembers);
+    </script>
+</body>
+</html>
